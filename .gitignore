@@ -1,0 +1,24 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Dependencies and generated builds
+node_modules/
+dist/
+api-dist/
+coverage/
+.vite/
+
+# Logs and local build metadata
+*.log
+*.tsbuildinfo
+npm-debug.log*
+
+# Local operating-system files
+.DS_Store
+Thumbs.db
