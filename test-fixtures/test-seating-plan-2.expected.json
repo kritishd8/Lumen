@@ -1,0 +1,799 @@
+{
+  "name": "test-seating-plan-2.png",
+  "imageWidth": 1400,
+  "imageHeight": 1000,
+  "screen": {
+    "x1": 0.21428571428571427,
+    "y1": 0.132,
+    "x2": 0.7857142857142857,
+    "y2": 0.132,
+    "source": "detected"
+  },
+  "seatCount": 82,
+  "rowCount": 6,
+  "rows": [
+    {
+      "label": "A",
+      "y": 336,
+      "seats": 11,
+      "firstX": 485,
+      "lastX": 925
+    },
+    {
+      "label": "B",
+      "y": 404,
+      "seats": 13,
+      "firstX": 445,
+      "lastX": 1017
+    },
+    {
+      "label": "C",
+      "y": 472,
+      "seats": 16,
+      "firstX": 395,
+      "lastX": 1099
+    },
+    {
+      "label": "D",
+      "y": 540,
+      "seats": 18,
+      "firstX": 365,
+      "lastX": 1157
+    },
+    {
+      "label": "E",
+      "y": 608,
+      "seats": 14,
+      "firstX": 425,
+      "lastX": 1041
+    },
+    {
+      "label": "F",
+      "y": 676,
+      "seats": 10,
+      "firstX": 505,
+      "lastX": 901
+    }
+  ],
+  "seats": [
+    {
+      "row": "A",
+      "number": "1",
+      "status": "available",
+      "x": 0.3464285714285714,
+      "y": 0.351,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "A",
+      "number": "2",
+      "status": "occupied",
+      "x": 0.37785714285714284,
+      "y": 0.35,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "A",
+      "number": "3",
+      "status": "available",
+      "x": 0.4092857142857143,
+      "y": 0.349,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "A",
+      "number": "4",
+      "status": "occupied",
+      "x": 0.4407142857142857,
+      "y": 0.348,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "A",
+      "number": "5",
+      "status": "available",
+      "x": 0.47214285714285714,
+      "y": 0.348,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "A",
+      "number": "6",
+      "status": "occupied",
+      "x": 0.5035714285714286,
+      "y": 0.348,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "A",
+      "number": "7",
+      "status": "available",
+      "x": 0.535,
+      "y": 0.348,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "A",
+      "number": "8",
+      "status": "occupied",
+      "x": 0.5664285714285714,
+      "y": 0.349,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "A",
+      "number": "9",
+      "status": "available",
+      "x": 0.5978571428571429,
+      "y": 0.349,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "A",
+      "number": "10",
+      "status": "unknown",
+      "x": 0.6292857142857143,
+      "y": 0.35,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "A",
+      "number": "11",
+      "status": "available",
+      "x": 0.6607142857142857,
+      "y": 0.352,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "B",
+      "number": "1",
+      "status": "available",
+      "x": 0.31785714285714284,
+      "y": 0.421,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "B",
+      "number": "2",
+      "status": "unknown",
+      "x": 0.3492857142857143,
+      "y": 0.419,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "B",
+      "number": "3",
+      "status": "available",
+      "x": 0.3807142857142857,
+      "y": 0.418,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "B",
+      "number": "4",
+      "status": "available",
+      "x": 0.41214285714285714,
+      "y": 0.417,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "B",
+      "number": "5",
+      "status": "occupied",
+      "x": 0.44357142857142856,
+      "y": 0.416,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "B",
+      "number": "6",
+      "status": "available",
+      "x": 0.475,
+      "y": 0.416,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "B",
+      "number": "7",
+      "status": "occupied",
+      "x": 0.5064285714285715,
+      "y": 0.416,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "B",
+      "number": "9",
+      "status": "occupied",
+      "x": 0.5692857142857143,
+      "y": 0.417,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "B",
+      "number": "10",
+      "status": "available",
+      "x": 0.6007142857142858,
+      "y": 0.417,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "B",
+      "number": "11",
+      "status": "occupied",
+      "x": 0.6321428571428571,
+      "y": 0.418,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "B",
+      "number": "12",
+      "status": "available",
+      "x": 0.6635714285714286,
+      "y": 0.42,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "B",
+      "number": "13",
+      "status": "unknown",
+      "x": 0.695,
+      "y": 0.421,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "B",
+      "number": "14",
+      "status": "available",
+      "x": 0.7264285714285714,
+      "y": 0.423,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "1",
+      "status": "occupied",
+      "x": 0.28214285714285714,
+      "y": 0.49,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "2",
+      "status": "available",
+      "x": 0.31357142857142856,
+      "y": 0.489,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "3",
+      "status": "unknown",
+      "x": 0.345,
+      "y": 0.487,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "4",
+      "status": "available",
+      "x": 0.37642857142857145,
+      "y": 0.486,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "5",
+      "status": "unknown",
+      "x": 0.40785714285714286,
+      "y": 0.485,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "6",
+      "status": "available",
+      "x": 0.4392857142857143,
+      "y": 0.485,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "7",
+      "status": "available",
+      "x": 0.4707142857142857,
+      "y": 0.484,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "8",
+      "status": "occupied",
+      "x": 0.5021428571428571,
+      "y": 0.484,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "10",
+      "status": "occupied",
+      "x": 0.565,
+      "y": 0.485,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "11",
+      "status": "available",
+      "x": 0.5964285714285714,
+      "y": 0.485,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "12",
+      "status": "occupied",
+      "x": 0.6278571428571429,
+      "y": 0.486,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "13",
+      "status": "available",
+      "x": 0.6592857142857143,
+      "y": 0.487,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "14",
+      "status": "occupied",
+      "x": 0.6907142857142857,
+      "y": 0.489,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "15",
+      "status": "available",
+      "x": 0.7221428571428572,
+      "y": 0.491,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "16",
+      "status": "unknown",
+      "x": 0.7535714285714286,
+      "y": 0.493,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "C",
+      "number": "17",
+      "status": "available",
+      "x": 0.785,
+      "y": 0.495,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "1",
+      "status": "available",
+      "x": 0.26071428571428573,
+      "y": 0.56,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "2",
+      "status": "occupied",
+      "x": 0.29214285714285715,
+      "y": 0.558,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "3",
+      "status": "available",
+      "x": 0.32357142857142857,
+      "y": 0.556,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "4",
+      "status": "occupied",
+      "x": 0.355,
+      "y": 0.555,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "5",
+      "status": "available",
+      "x": 0.38642857142857145,
+      "y": 0.554,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "6",
+      "status": "unknown",
+      "x": 0.41785714285714287,
+      "y": 0.553,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "7",
+      "status": "available",
+      "x": 0.4492857142857143,
+      "y": 0.552,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "8",
+      "status": "unknown",
+      "x": 0.4807142857142857,
+      "y": 0.552,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "9",
+      "status": "available",
+      "x": 0.5121428571428571,
+      "y": 0.552,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "11",
+      "status": "occupied",
+      "x": 0.575,
+      "y": 0.553,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "12",
+      "status": "available",
+      "x": 0.6064285714285714,
+      "y": 0.554,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "13",
+      "status": "occupied",
+      "x": 0.6378571428571429,
+      "y": 0.555,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "14",
+      "status": "available",
+      "x": 0.6692857142857143,
+      "y": 0.556,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "15",
+      "status": "occupied",
+      "x": 0.7007142857142857,
+      "y": 0.557,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "16",
+      "status": "available",
+      "x": 0.7321428571428571,
+      "y": 0.559,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "17",
+      "status": "occupied",
+      "x": 0.7635714285714286,
+      "y": 0.561,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "18",
+      "status": "available",
+      "x": 0.795,
+      "y": 0.564,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "D",
+      "number": "19",
+      "status": "unknown",
+      "x": 0.8264285714285714,
+      "y": 0.566,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "1",
+      "status": "occupied",
+      "x": 0.30357142857142855,
+      "y": 0.625,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "2",
+      "status": "available",
+      "x": 0.335,
+      "y": 0.624,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "3",
+      "status": "occupied",
+      "x": 0.36642857142857144,
+      "y": 0.622,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "4",
+      "status": "available",
+      "x": 0.39785714285714285,
+      "y": 0.621,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "5",
+      "status": "occupied",
+      "x": 0.42928571428571427,
+      "y": 0.621,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "6",
+      "status": "available",
+      "x": 0.4607142857142857,
+      "y": 0.62,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "7",
+      "status": "occupied",
+      "x": 0.49214285714285716,
+      "y": 0.62,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "9",
+      "status": "unknown",
+      "x": 0.555,
+      "y": 0.62,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "10",
+      "status": "available",
+      "x": 0.5864285714285714,
+      "y": 0.621,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "11",
+      "status": "unknown",
+      "x": 0.6178571428571429,
+      "y": 0.622,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "12",
+      "status": "available",
+      "x": 0.6492857142857142,
+      "y": 0.623,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "13",
+      "status": "available",
+      "x": 0.6807142857142857,
+      "y": 0.624,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "14",
+      "status": "occupied",
+      "x": 0.7121428571428572,
+      "y": 0.626,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "E",
+      "number": "15",
+      "status": "available",
+      "x": 0.7435714285714285,
+      "y": 0.628,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "F",
+      "number": "1",
+      "status": "unknown",
+      "x": 0.3607142857142857,
+      "y": 0.691,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "F",
+      "number": "2",
+      "status": "available",
+      "x": 0.3921428571428571,
+      "y": 0.69,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "F",
+      "number": "3",
+      "status": "available",
+      "x": 0.4235714285714286,
+      "y": 0.689,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "F",
+      "number": "4",
+      "status": "occupied",
+      "x": 0.455,
+      "y": 0.688,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "F",
+      "number": "5",
+      "status": "available",
+      "x": 0.48642857142857143,
+      "y": 0.688,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "F",
+      "number": "6",
+      "status": "occupied",
+      "x": 0.5178571428571429,
+      "y": 0.688,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "F",
+      "number": "7",
+      "status": "available",
+      "x": 0.5492857142857143,
+      "y": 0.688,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "F",
+      "number": "8",
+      "status": "occupied",
+      "x": 0.5807142857142857,
+      "y": 0.689,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "F",
+      "number": "9",
+      "status": "available",
+      "x": 0.6121428571428571,
+      "y": 0.69,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    },
+    {
+      "row": "F",
+      "number": "10",
+      "status": "occupied",
+      "x": 0.6435714285714286,
+      "y": 0.691,
+      "width": 0.02142857142857143,
+      "height": 0.024
+    }
+  ],
+  "notes": "Synthetic six-row boutique plan with a wider screen, steeper row spacing and a different seat count. Used to prove two screenshots produce different auditoriums."
+}
