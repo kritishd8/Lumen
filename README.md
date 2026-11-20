@@ -61,6 +61,14 @@ npm run build
 npm run preview
 ```
 
+### Deploy to GitHub Pages
+
+The repository includes a GitHub Actions workflow for publishing the browser app to
+`https://kritishd8.github.io/Lumen/` whenever `main` is updated. In the repository's
+**Settings → Pages**, select **GitHub Actions** as the build and deployment source.
+The workflow builds the app and deploys the `dist` directory. The optional Node API
+is not deployed to GitHub Pages.
+
 ## Optional REST API
 
 The API is a separate Node.js service. Running the browser app does not require the

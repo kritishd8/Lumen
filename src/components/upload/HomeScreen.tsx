@@ -14,6 +14,8 @@ import { validateImageFile } from '@/modules/image-processing/prepare';
 import type { CropRect } from '@/types';
 import { CropDialog } from './CropDialog';
 
+const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
 function formatDate(timestamp: number): string {
   return new Intl.DateTimeFormat(undefined, {
     month: 'short',
@@ -91,7 +93,7 @@ export function HomeScreen() {
   const loadSample = async () => {
     setLoadingSample(true);
     try {
-      const response = await fetch('/test-seating-plan.png');
+      const response = await fetch(publicAsset('test-seating-plan.png'));
       if (!response.ok) throw new Error('The bundled test plan could not be loaded.');
       const blob = await response.blob();
       const file = new File([blob], 'test-seating-plan.png', { type: 'image/png' });
@@ -192,7 +194,7 @@ export function HomeScreen() {
               </div>
               <div className="step-image-wrap">
                 <img
-                  src="/test-seating-plan.png"
+                  src={publicAsset('test-seating-plan.png')}
                   alt="Example cinema seating plan screenshot"
                   loading="lazy"
                 />
@@ -226,7 +228,7 @@ export function HomeScreen() {
               </div>
               <div className="step-image-wrap">
                 <img
-                  src="/test-seating-plan-2.png"
+                  src={publicAsset('test-seating-plan-2.png')}
                   alt="Example seating plan ready for review"
                   loading="lazy"
                 />
@@ -258,7 +260,7 @@ export function HomeScreen() {
             <div className="home-step-visual step-visual--view">
               <div className="step-theatre-screen">
                 <video
-                  src="/cinema-preview.mp4"
+                  src={publicAsset('cinema-preview.mp4')}
                   autoPlay
                   muted
                   loop
