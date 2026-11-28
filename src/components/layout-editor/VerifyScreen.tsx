@@ -80,8 +80,8 @@ export function VerifyScreen() {
     <div className="verify-screen">
       <div className="verify-topbar">
         <div className="verify-title">
-          <strong>Verify seat map</strong>
-          <span>Step 02 · correct before 3D</span>
+          <strong>Confirm your seat plan</strong>
+          <span>Make any quick corrections before Lumen builds the room.</span>
         </div>
         <div className="verify-stats">
           <div className="verify-stat">
@@ -114,8 +114,8 @@ export function VerifyScreen() {
           <Redo2 size={13} />
           Redo
         </button>
-        <button className="btn btn--primary btn--sm" onClick={() => setStage('configure')}>
-          Auditorium settings
+        <button className="btn btn--primary btn--sm" onClick={() => setStage('viewer')}>
+          Open auditorium
           <ArrowRight size={13} />
         </button>
       </div>
@@ -149,7 +149,7 @@ export function VerifyScreen() {
           >
             <Crosshair size={16} />
           </button>
-          <button className="icon-btn" onClick={() => setStage('configure')} title="Continue">
+          <button className="icon-btn" onClick={() => setStage('viewer')} title="Open auditorium">
             <ScanLine size={16} />
           </button>
         </div>

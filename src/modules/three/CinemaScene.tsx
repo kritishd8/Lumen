@@ -62,8 +62,8 @@ function SceneContent({
 
   return (
     <>
-      <color attach="background" args={[mode === 'overview' ? '#171a20' : '#06070a']} />
-      {mode === 'seat' && <fog attach="fog" args={['#06070a', fogNear, fogFar]} />}
+      <color attach="background" args={[mode === 'overview' ? '#14110e' : '#070604']} />
+      {mode === 'seat' && <fog attach="fog" args={['#070604', fogNear, fogFar]} />}
 
       <Lighting geometry={geometry} config={config} lightsOn={lightsOn} />
       <Auditorium

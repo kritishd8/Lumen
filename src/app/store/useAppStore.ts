@@ -433,7 +433,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         name: projectNameFromFile(file.name),
         createdAt: now,
         updatedAt: now,
-        stage: 'viewer',
+        stage: 'verify',
         image: {
           key: imageKey,
           originalKey,
@@ -457,7 +457,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       await saveProjectRecord(project);
       set({
         project,
-        stage: 'viewer',
+        stage: 'verify',
         analysis: {
           status: 'complete',
           percent: 100,
@@ -466,17 +466,17 @@ export const useAppStore = create<AppState>((set, get) => ({
             ...get().analysis.logs,
             ocrNote,
             `${layout.seats.length} seats in ${layout.rows.length} rows across ${layout.sections.length} section${layout.sections.length === 1 ? '' : 's'}.`,
-            'Opening the 3D auditorium. You can edit the seat map and room settings at any time.',
+            'Review the detected plan, then open the live auditorium.',
           ],
         },
       });
       await get().refreshProjects();
       get().addToast({
         tone: layout.seats.length ? 'success' : 'warning',
-        title: layout.seats.length ? '3D auditorium ready' : 'No seats found',
+        title: layout.seats.length ? 'Seat plan ready to review' : 'No seats found',
         detail: layout.seats.length
-          ? `${layout.seats.length} seats detected. Settings and seat-map editing are available in the viewer.`
-          : 'The 3D room is open. Use the editor to add seats manually or try a tighter crop.',
+          ? `${layout.seats.length} seats detected. Check the plan before opening the auditorium.`
+          : 'Use the plan editor to add seats manually or try a tighter crop.',
       });
     } catch (error) {
       analysisWorker?.terminate();

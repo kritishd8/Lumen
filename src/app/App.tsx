@@ -1,12 +1,7 @@
 import { useEffect } from 'react';
-import { AppHeader } from '@/components/common/AppHeader';
 import { ToastStack } from '@/components/common/ToastStack';
 import { HomeScreen } from '@/components/upload/HomeScreen';
-import { AnalyzingScreen } from '@/components/image-analysis/AnalyzingScreen';
-import { VerifyScreen } from '@/components/layout-editor/VerifyScreen';
-import { ConfigureScreen } from '@/components/configuration/ConfigureScreen';
-import { CinemaViewer } from '@/components/viewer/CinemaViewer';
-import { CompareScreen } from '@/components/compare/CompareScreen';
+import { LumenFlow } from '@/components/lumen-flow/LumenFlow';
 import { useAppStore } from './store/useAppStore';
 
 export default function App() {
@@ -21,9 +16,8 @@ export default function App() {
   const needsProject = stage !== 'home' && stage !== 'analyzing';
   if (needsProject && !project) {
     return (
-      <div className="app-shell">
-        {stage !== 'viewer' && <AppHeader />}
-        <main className="app-main">
+      <div className={`app-shell app-shell--${stage}`}>
+        <main className="app-main lumen-flow-mount">
           <div className="empty-state" style={{ minHeight: '60vh' }}>
             <h3>No project is open</h3>
             <p>Choose a saved reconstruction or upload a new seating plan.</p>
@@ -38,15 +32,9 @@ export default function App() {
   }
 
   return (
-    <div className="app-shell">
-      {stage !== 'viewer' && <AppHeader />}
-      <main className="app-main">
-        {stage === 'home' && <HomeScreen />}
-        {stage === 'analyzing' && <AnalyzingScreen />}
-        {stage === 'verify' && <VerifyScreen />}
-        {stage === 'configure' && <ConfigureScreen />}
-        {stage === 'viewer' && <CinemaViewer />}
-        {stage === 'compare' && <CompareScreen />}
+    <div className={`app-shell app-shell--${stage}`}>
+      <main className={`app-main${stage === 'home' ? '' : ' lumen-flow-mount'}`}>
+        {stage === 'home' ? <HomeScreen /> : <LumenFlow />}
       </main>
       <ToastStack />
     </div>

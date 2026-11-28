@@ -197,7 +197,7 @@ export function Auditorium({ geometry, config, layout, cutaway = false }: Audito
             <boxGeometry args={[widthM, height, step.depth]} />
             <meshStandardMaterial
               map={carpet}
-              color="#b4b4b4"
+              color="#cfc8b8"
               roughness={0.98}
               metalness={0}
             />
@@ -212,7 +212,7 @@ export function Auditorium({ geometry, config, layout, cutaway = false }: Audito
           receiveShadow
         >
           <boxGeometry args={[aisle.width, 0.018, aisle.depth]} />
-          <meshStandardMaterial color="#3b2d28" roughness={0.96} />
+          <meshStandardMaterial color="#38302a" roughness={0.96} />
         </mesh>
       ))}
 
@@ -220,24 +220,24 @@ export function Auditorium({ geometry, config, layout, cutaway = false }: Audito
         <>
           <mesh position={[0, ceilingHeightM + 0.12, lengthM / 2]} receiveShadow>
             <boxGeometry args={[widthM, 0.24, lengthM]} />
-            <meshStandardMaterial color="#0c0d10" roughness={0.96} metalness={0.02} />
+            <meshStandardMaterial color="#0f0d0a" roughness={0.96} metalness={0.02} />
           </mesh>
 
           <mesh position={[-widthM / 2 - 0.12, ceilingHeightM / 2, lengthM / 2]} receiveShadow>
             <boxGeometry args={[0.24, ceilingHeightM, lengthM]} />
-            <meshStandardMaterial map={wall} color="#b9b9b9" roughness={0.94} />
+            <meshStandardMaterial map={wall} color="#c9c1b1" roughness={0.94} />
           </mesh>
           <mesh position={[widthM / 2 + 0.12, ceilingHeightM / 2, lengthM / 2]} receiveShadow>
             <boxGeometry args={[0.24, ceilingHeightM, lengthM]} />
-            <meshStandardMaterial map={wall} color="#b9b9b9" roughness={0.94} />
+            <meshStandardMaterial map={wall} color="#c9c1b1" roughness={0.94} />
           </mesh>
           <mesh position={[0, ceilingHeightM / 2, lengthM + 0.12]} receiveShadow>
             <boxGeometry args={[widthM, ceilingHeightM, 0.24]} />
-            <meshStandardMaterial map={wall} color="#a6a6a6" roughness={0.95} />
+            <meshStandardMaterial map={wall} color="#bfb5a2" roughness={0.95} />
           </mesh>
           <mesh position={[0, ceilingHeightM / 2, -0.32]} receiveShadow>
             <boxGeometry args={[widthM, ceilingHeightM, 0.3]} />
-            <meshStandardMaterial color="#0a0b0e" roughness={0.92} />
+            <meshStandardMaterial color="#0c0a08" roughness={0.92} />
           </mesh>
         </>
       )}
@@ -246,11 +246,11 @@ export function Auditorium({ geometry, config, layout, cutaway = false }: Audito
         <group key={`wall-light-${index}`}>
           <mesh position={[light.side * (widthM / 2 - 0.015), light.y, light.z]}>
             <boxGeometry args={[0.04, 0.16, 0.5]} />
-            <meshBasicMaterial color="#d49b68" toneMapped={false} />
+            <meshBasicMaterial color="#cfa964" toneMapped={false} />
           </mesh>
           <mesh position={[light.side * (widthM / 2 - 0.04), light.y, light.z]}>
             <boxGeometry args={[0.07, 0.26, 0.62]} />
-            <meshStandardMaterial color="#17191d" roughness={0.6} metalness={0.4} />
+            <meshStandardMaterial color="#1b1712" roughness={0.6} metalness={0.4} />
           </mesh>
         </group>
       ))}
@@ -260,7 +260,7 @@ export function Auditorium({ geometry, config, layout, cutaway = false }: Audito
           <boxGeometry
             args={light.horizontal ? [0.24, 0.018, 0.07] : [0.07, 0.018, 0.24]}
           />
-          <meshBasicMaterial color="#d49b68" toneMapped={false} />
+          <meshBasicMaterial color="#cfa964" toneMapped={false} />
         </mesh>
       ))}
 
@@ -274,7 +274,7 @@ export function Auditorium({ geometry, config, layout, cutaway = false }: Audito
             <boxGeometry
               args={[widthM * 0.9, config.stage.heightM, config.stage.depthM]}
             />
-            <meshStandardMaterial color="#17181c" roughness={0.8} />
+            <meshStandardMaterial color="#1e1913" roughness={0.8} />
           </mesh>
           <mesh
             position={[
@@ -287,7 +287,7 @@ export function Auditorium({ geometry, config, layout, cutaway = false }: Audito
             <boxGeometry
               args={[widthM * 0.9, 0.025, config.stage.depthM]}
             />
-            <meshStandardMaterial color="#202126" roughness={0.7} metalness={0.2} />
+            <meshStandardMaterial color="#242019" roughness={0.7} metalness={0.2} />
           </mesh>
         </group>
       )}

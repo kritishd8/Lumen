@@ -71,7 +71,7 @@ export function ConfigureScreen() {
     <div className="configure-screen">
       <div className="page-heading">
         <div>
-          <div className="section-kicker">Step 03 / spatial calibration</div>
+          <div className="section-kicker">Reel 03 / build the room</div>
           <h1>Build the room around the seat map.</h1>
           <p>
             Screen width is the primary scale reference. Every other dimension is estimated

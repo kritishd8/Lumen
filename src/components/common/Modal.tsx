@@ -9,9 +9,10 @@ interface ModalProps {
   children: ReactNode;
   footer?: ReactNode;
   width?: number;
+  variant?: 'default' | 'lumen';
 }
 
-export function Modal({ open, title, description, onClose, children, footer, width }: ModalProps) {
+export function Modal({ open, title, description, onClose, children, footer, width, variant = 'default' }: ModalProps) {
   useEffect(() => {
     if (!open) return;
     const handleKey = (event: KeyboardEvent) => {
@@ -23,8 +24,8 @@ export function Modal({ open, title, description, onClose, children, footer, wid
 
   if (!open) return null;
   return (
-    <div className="modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
-      <div className="modal" style={width ? { width: `min(${width}px, 100%)` } : undefined} role="dialog" aria-modal="true">
+    <div className={`modal-backdrop modal-backdrop--${variant}`} onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
+      <div className={`modal modal--${variant}`} style={width ? { width: `min(${width}px, 100%)` } : undefined} role="dialog" aria-modal="true">
         <div className="modal-head">
           <div>
             <h2>{title}</h2>

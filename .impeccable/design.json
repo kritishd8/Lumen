@@ -1,0 +1,14 @@
+{
+  "name": "Lumen",
+  "northStar": "The Quiet Cinema",
+  "mode": "operate",
+  "tokens": {
+    "canvas": "#f4f4f1",
+    "paper": "#fbfbfa",
+    "ink": "#232329",
+    "muted": "#68696f",
+    "accent": "#292930",
+    "surfaceRadius": "20px",
+    "controlRadius": "999px"
+  }
+}

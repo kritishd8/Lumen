@@ -33,8 +33,8 @@ export function Lighting({ geometry, config, lightsOn = false }: LightingProps) 
 
   return (
     <group>
-      <ambientLight intensity={lightsOn ? 0.7 : 0.32} color={lightsOn ? '#e5d6bd' : '#8892a0'} />
-      <hemisphereLight args={['#8f9bad', '#241d17', lightsOn ? 0.8 : 0.5]} />
+      <ambientLight intensity={lightsOn ? 0.7 : 0.32} color={lightsOn ? '#e8dcc4' : '#8d8779'} />
+      <hemisphereLight args={['#9a9284', '#241d17', lightsOn ? 0.8 : 0.5]} />
 
       {/* Cool spill from the screen. */}
       <pointLight
@@ -42,7 +42,7 @@ export function Lighting({ geometry, config, lightsOn = false }: LightingProps) 
         intensity={24}
         distance={Math.max(10, config.screen.widthM * 1.1)}
         decay={2}
-        color="#cdd7e4"
+        color="#d8d4c9"
       />
 
       {/* Warm ceiling wash. */}
@@ -82,7 +82,7 @@ export function Lighting({ geometry, config, lightsOn = false }: LightingProps) 
         intensity={lightsOn ? 17 : 9}
         distance={Math.max(8, lengthM * 0.7)}
         decay={2}
-        color="#9aa7b8"
+        color="#b3a88f"
       />
     </group>
   );

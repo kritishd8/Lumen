@@ -26,10 +26,10 @@ export function updateDefaultScreenTexture(
   const sunY = height * 0.48;
 
   const sky = context.createLinearGradient(0, 0, width * 0.25, height);
-  sky.addColorStop(0, '#101a32');
-  sky.addColorStop(0.42, '#385a78');
-  sky.addColorStop(0.72, '#c47b68');
-  sky.addColorStop(1, '#171d2d');
+  sky.addColorStop(0, '#171310');
+  sky.addColorStop(0.42, '#4a3a2c');
+  sky.addColorStop(0.72, '#c98d5f');
+  sky.addColorStop(1, '#120e0b');
   context.fillStyle = sky;
   context.fillRect(0, 0, width, height);
 
@@ -72,9 +72,9 @@ export function updateDefaultScreenTexture(
     context.fill();
   };
 
-  drawRidge(horizon + 6, 18, 0.8, '#364354');
-  drawRidge(horizon + 29, 22, -0.55, '#202a3a');
-  drawRidge(horizon + 58, 15, 0.35, '#111827');
+  drawRidge(horizon + 6, 18, 0.8, '#3a3028');
+  drawRidge(horizon + 29, 22, -0.55, '#28211a');
+  drawRidge(horizon + 58, 15, 0.35, '#16110d');
 
   const reflection = context.createLinearGradient(0, horizon, 0, height);
   reflection.addColorStop(0, 'rgba(226, 157, 125, 0.24)');
@@ -119,7 +119,7 @@ export function createCarpetTexture(): THREE.CanvasTexture {
   canvas.height = 256;
   const context = canvas.getContext('2d');
   if (!context) return new THREE.CanvasTexture(canvas);
-  context.fillStyle = '#151619';
+  context.fillStyle = '#17140f';
   context.fillRect(0, 0, 256, 256);
   let seed = 8473;
   const random = () => {
@@ -156,9 +156,9 @@ export function createWallTexture(): THREE.CanvasTexture {
   const context = canvas.getContext('2d');
   if (!context) return new THREE.CanvasTexture(canvas);
   const gradient = context.createLinearGradient(0, 0, 0, 128);
-  gradient.addColorStop(0, '#1b1d22');
-  gradient.addColorStop(0.5, '#17191d');
-  gradient.addColorStop(1, '#111216');
+  gradient.addColorStop(0, '#1c1813');
+  gradient.addColorStop(0.5, '#181410');
+  gradient.addColorStop(1, '#100d0a');
   context.fillStyle = gradient;
   context.fillRect(0, 0, 128, 128);
   for (let i = 0; i < 1200; i += 1) {

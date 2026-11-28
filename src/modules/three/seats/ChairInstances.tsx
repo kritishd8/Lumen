@@ -124,8 +124,8 @@ function seatColour(
   config: AuditoriumConfig,
   part: PartMaterial,
 ): THREE.Color {
-  if (selected) return new THREE.Color('#d49b68');
-  if (part === 'metal') return new THREE.Color('#24262b');
+  if (selected) return new THREE.Color('#cfa964');
+  if (part === 'metal') return new THREE.Color('#27231d');
   if (part === 'accent') {
     if (seat.status === 'available') {
       return new THREE.Color(
@@ -134,7 +134,7 @@ function seatColour(
           : MATERIAL_PRESETS[config.materialPreset].accent,
       ).multiplyScalar(1.22);
     }
-    return new THREE.Color(seat.status === 'occupied' ? '#292b30' : '#554534');
+    return new THREE.Color(seat.status === 'occupied' ? '#2b2721' : '#5a4c3a');
   }
   return new THREE.Color(seatColorFor(seat.status, config.materialPreset, config.customSeatColor));
 }
@@ -256,7 +256,7 @@ function ChairGroup({
         >
           {part.material === 'metal' ? (
             <meshStandardMaterial
-              color="#24262b"
+              color="#27231d"
               roughness={0.55}
               metalness={0.62}
             />
@@ -303,7 +303,7 @@ function ChairGroup({
       >
         <ringGeometry args={[config.seatWidthM * 0.54, config.seatWidthM * 0.63, 40]} />
         <meshBasicMaterial
-          color="#d49b68"
+          color="#cfa964"
           transparent
           opacity={0.9}
           depthWrite={false}

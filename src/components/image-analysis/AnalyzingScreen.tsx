@@ -27,7 +27,7 @@ export function AnalyzingScreen() {
           </div>
         </div>
         <div className="analysis-detail">
-          <div className="section-kicker">Step 02 / image understanding</div>
+          <div className="section-kicker">Reel 01 / image understanding</div>
           <h1>
             {hasError
               ? 'The seating plan could not be analysed.'

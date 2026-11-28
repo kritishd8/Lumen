@@ -187,7 +187,7 @@ export function Screen({ geometry, config }: ScreenProps) {
     <group position={[centerM[0], centerM[1], centerM[2]]}>
       <group rotation={[-tiltDeg * DEG, 0, 0]}>
         <mesh geometry={surroundGeometry} position={[0, 0, -0.045]}>
-          <meshStandardMaterial color="#0a0b0d" roughness={0.88} metalness={0.18} />
+          <meshStandardMaterial color="#0d0b09" roughness={0.88} metalness={0.18} />
         </mesh>
 
         <mesh geometry={screenGeometry} renderOrder={2}>
@@ -201,17 +201,17 @@ export function Screen({ geometry, config }: ScreenProps) {
           intensity={18}
           distance={Math.max(7, widthM * 0.85)}
           decay={2}
-          color="#d8e0ea"
+          color="#e9e4d6"
         />
       </group>
 
       <mesh position={[0, heightM / 2 + 0.22, -0.06]}>
         <boxGeometry args={[widthM + 0.5, 0.08, 0.16]} />
-        <meshStandardMaterial color="#17181c" roughness={0.5} metalness={0.5} />
+        <meshStandardMaterial color="#1e1913" roughness={0.5} metalness={0.5} />
       </mesh>
       <mesh position={[0, -heightM / 2 - 0.2, -0.06]}>
         <boxGeometry args={[widthM + 0.5, 0.14, 0.2]} />
-        <meshStandardMaterial color="#141518" roughness={0.55} metalness={0.42} />
+        <meshStandardMaterial color="#171410" roughness={0.55} metalness={0.42} />
       </mesh>
     </group>
   );

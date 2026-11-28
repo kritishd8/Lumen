@@ -106,6 +106,7 @@ export function CropDialog({ open, imageUrl, fileName, onClose, onConfirm }: Cro
       description="Crop away booking UI, navigation or unrelated content before analysis. The original screenshot is kept in the project."
       onClose={onClose}
       width={820}
+      variant="lumen"
       footer={
         <>
           <button className="btn btn--ghost" onClick={onClose}>
