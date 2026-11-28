@@ -93,6 +93,9 @@ settings include `API_PORT`, `API_HOST`, `API_CORS_ORIGINS`, and `LOG_LEVEL`.
 hosting provider's secret manager. For request formats, limits, authentication,
 Docker deployment, and error responses, see [the API guide](docs/api.md).
 
+For a complete example of keeping the key on a booking app's server and rendering a
+returned auditorium in that app, see [Integrating Lumen](docs/integrating-lumen.md).
+
 ## Development checks
 
 ```sh

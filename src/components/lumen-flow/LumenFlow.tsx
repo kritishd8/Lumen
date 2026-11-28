@@ -27,7 +27,7 @@ function downloadAuditoriumManifest(project: ProjectRecord) {
   URL.revokeObjectURL(url);
 }
 
-function Brand() { return <button className="lf-brand" onClick={() => useAppStore.getState().goHome()}><i /><span>Lumen</span></button>; }
+function Brand() { return <button className="lf-brand" onClick={() => useAppStore.getState().goHome()}>Lumen</button>; }
 
 function UploadTrigger({ compact = false }: { compact?: boolean }) {
   const input = useRef<HTMLInputElement>(null);
