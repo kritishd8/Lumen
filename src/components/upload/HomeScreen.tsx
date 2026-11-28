@@ -60,7 +60,6 @@ export function HomeScreen() {
       <section className="lumen-intro-card" aria-labelledby="lumen-intro-title">
         <header className="lumen-intro-nav">
           <a className="lumen-intro-brand" href="#top" aria-label="Lumen home">
-            <span className="lumen-intro-mark" aria-hidden="true"><i /><i /><i /></span>
             Lumen
           </a>
           <button className="lumen-intro-nav-action" type="button" onClick={() => fileInputRef.current?.click()}>Get started</button>
