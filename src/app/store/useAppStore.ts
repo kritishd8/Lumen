@@ -92,12 +92,14 @@ interface AppState {
   setSelectedSeats: (ids: string[]) => void;
   updateSeat: (id: string, patch: Partial<Seat>) => void;
   updateSeats: (ids: string[], patch: Partial<Seat>) => void;
+  scaleSeats: (ids: string[], factor: number) => void;
   addSeat: (x: number, y: number, rowId?: string) => string | null;
   deleteSeats: (ids: string[]) => void;
   moveSeatToRow: (seatId: string, rowId: string) => void;
   setScreenPlacement: (screen: Partial<SeatingLayout['screen']>) => void;
   regroupRows: () => void;
   addAisle: (x: number, y: number, orientation?: 'vertical' | 'horizontal') => void;
+  updateAisle: (id: string, patch: Partial<Pick<SeatingLayout['aisles'][number], 'x' | 'y' | 'width' | 'orientation'>>) => void;
   deleteAisle: (id: string) => void;
   addSection: () => void;
   removeSection: (id: string) => void;
@@ -627,6 +629,19 @@ export const useAppStore = create<AppState>((set, get) => ({
     set(updateLayoutWithHistory(state, { ...layout, seats }));
   },
 
+  scaleSeats: (ids, factor) => {
+    const state = get();
+    if (!state.project || !ids.length) return;
+    const idSet = new Set(ids);
+    const layout = state.project.layout;
+    const seats = layout.seats.map((seat) =>
+      idSet.has(seat.id)
+        ? { ...seat, width: Math.max(0.002, Math.min(0.18, seat.width * factor)), source: 'manual' as const }
+        : seat,
+    );
+    set(updateLayoutWithHistory(state, { ...layout, seats }));
+  },
+
   addSeat: (x, y, rowId) => {
     const state = get();
     if (!state.project) return null;
@@ -712,6 +727,19 @@ export const useAppStore = create<AppState>((set, get) => ({
     const state = get();
     if (!state.project) return;
     set(updateLayoutWithHistory(state, addAisleToLayout(state.project.layout, x, y, orientation)));
+  },
+
+  updateAisle: (id, patch) => {
+    const state = get();
+    if (!state.project) return;
+    set(
+      updateLayoutWithHistory(state, {
+        ...state.project.layout,
+        aisles: state.project.layout.aisles.map((aisle) =>
+          aisle.id === id ? { ...aisle, ...patch, source: 'manual' as const } : aisle,
+        ),
+      }),
+    );
   },
 
   deleteAisle: (id) => {
@@ -859,7 +887,11 @@ export const useAppStore = create<AppState>((set, get) => ({
     config.screen.preset = presetId;
     config.screen.widthM = widthM;
     config.sources['screen.widthM'] = 'user';
-    if (config.sources['screen.heightM'] !== 'user') {
+    if (presetId === 'custom') {
+      // Custom dimensions are deliberately independent. Theatre owners may know
+      // both physical measurements without knowing the screen's aspect ratio.
+      config.sources['screen.heightM'] = 'user';
+    } else {
       config.screen.heightM =
         widthM / Math.max(1, aspectValue(config.screen.aspectRatio, config.screen.customAspect));
       config.sources['screen.heightM'] = 'estimated';

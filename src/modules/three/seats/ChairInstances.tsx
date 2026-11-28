@@ -3,12 +3,13 @@ import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import type { AuditoriumConfig, Seat, SeatType, SpatialSeat } from '@/types';
 import { MATERIAL_PRESETS, seatColorFor } from '@/utils/defaults';
+import { median } from '@/modules/reconstruction/coordinates';
 
 interface ChairInstancesProps {
   seats: SpatialSeat[];
   config: AuditoriumConfig;
   selectedSeatId?: string | null;
-  onSelectSeat?: (seatId: string) => void;
+  onSelectSeat?: (seatId: string, additive?: boolean) => void;
   onDoubleClickSeat?: (seatId: string) => void;
 }
 
@@ -153,7 +154,7 @@ function ChairGroup({
   config: AuditoriumConfig;
   selectedSeatId?: string | null;
   seatWidthScales: Map<string, number>;
-  onSelectSeat?: (seatId: string) => void;
+  onSelectSeat?: (seatId: string, additive?: boolean) => void;
   onDoubleClickSeat?: (seatId: string) => void;
 }) {
   const parts = useMemo(() => buildParts(config, type), [config, type]);
@@ -276,7 +277,10 @@ function ChairGroup({
         onClick={(event) => {
           event.stopPropagation();
           const index = event.instanceId ?? -1;
-          if (index >= 0 && seats[index]) onSelectSeat?.(seats[index].seat.id);
+          if (index >= 0 && seats[index]) {
+            const pointer = event.nativeEvent as PointerEvent;
+            onSelectSeat?.(seats[index].seat.id, pointer.ctrlKey || pointer.metaKey || pointer.shiftKey);
+          }
         }}
         onDoubleClick={(event) => {
           event.stopPropagation();
@@ -349,12 +353,14 @@ export function ChairInstances({
           return;
         }
 
+        const baselineSeatWidth = median(row.map((item) => item.seat.width)) || seat.seat.width || 0.02;
+        const manualWidthScale = Math.max(0.55, Math.min(1.7, seat.seat.width / baselineSeatWidth));
         const width = config.seatWidthM * typeScale(seat.seat.type).width;
         const availableWidth = Math.max(
           width * 0.55,
           Math.min(...neighbourGaps) - config.seating.seatGapM,
         );
-        scales.set(seat.seat.id, Math.min(1, availableWidth / width));
+        scales.set(seat.seat.id, Math.min(manualWidthScale, availableWidth / width));
       });
     });
     return scales;

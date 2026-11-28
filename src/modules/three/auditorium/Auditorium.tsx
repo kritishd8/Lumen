@@ -79,7 +79,7 @@ export function Auditorium({ geometry, config, layout, cutaway = false }: Audito
       depth: number;
     }[] = [];
 
-    layout.aisles.forEach((aisle) => {
+    layout.aisles.filter((aisle) => aisle.source === 'manual').forEach((aisle) => {
       const projection = projectToScreenAxes(
         { x: aisle.x, y: aisle.y },
         { center: screenCenter, tangent: screenTangent, normal: screenNormal },
@@ -133,7 +133,7 @@ export function Auditorium({ geometry, config, layout, cutaway = false }: Audito
   const aisleLights = useMemo(() => {
     const lights: { x: number; y: number; z: number; width: number; horizontal: boolean }[] = [];
     const { screenCenter, screenTangent, screenNormal, metresPerPixel } = geometry.calibration;
-    layout.aisles.forEach((aisle) => {
+    layout.aisles.filter((aisle) => aisle.source === 'manual').forEach((aisle) => {
       const projection = projectToScreenAxes(
         { x: aisle.x, y: aisle.y },
         {

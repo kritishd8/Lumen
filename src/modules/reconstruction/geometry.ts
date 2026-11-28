@@ -46,8 +46,29 @@ export function buildSpatialGeometry(
   const minDepthPx = metrics.firstRowDepthPx;
   const rowIndexById = new Map(layout.rows.map((row) => [row.id, row.index]));
   const rowById = new Map(layout.rows.map((row) => [row.id, row]));
+  const columnOffsets = new Map<string, number>();
+  layout.rows.forEach((row) => {
+    const seats = row.seatIds
+      .map((id) => layout.seats.find((seat) => seat.id === id))
+      .filter((seat): seat is Seat => Boolean(seat))
+      .sort((a, b) => {
+        const aProjection = projectToScreenAxes({ x: a.x, y: a.y }, metrics.basis, layout.imageWidth, layout.imageHeight);
+        const bProjection = projectToScreenAxes({ x: b.x, y: b.y }, metrics.basis, layout.imageWidth, layout.imageHeight);
+        return aProjection.horizontalPx - bProjection.horizontalPx;
+      });
+    const midpoint = (seats.length - 1) / 2;
+    seats.forEach((seat, index) => {
+      columnOffsets.set(seat.id, (index - midpoint) * (config.seating.seatGapM - 0.12));
+    });
+  });
   const slopePercent = config.floor.slopePercent;
   const screenCenter = screenPoint(config);
+  const manualDividers = layout.aisles
+    .filter((aisle) => aisle.source === 'manual' && aisle.orientation === 'vertical')
+    .map((aisle) => ({
+      x: projectToScreenAxes({ x: aisle.x, y: aisle.y }, metrics.basis, layout.imageWidth, layout.imageHeight).horizontalPx * mpp,
+      halfWidth: Math.max(0.32, aisle.width * layout.imageWidth * mpp / 2),
+    }));
 
   const rows: SpatialRow[] = layout.rows
     .slice()
@@ -86,7 +107,11 @@ export function buildSpatialGeometry(
       layout.imageWidth,
       layout.imageHeight,
     );
-    const x = projection.horizontalPx * mpp;
+    const baseX = projection.horizontalPx * mpp + (columnOffsets.get(seat.id) ?? 0);
+    const x = manualDividers.reduce(
+      (offset, divider) => offset + (baseX + offset >= divider.x ? divider.halfWidth : -divider.halfWidth),
+      baseX,
+    );
     const z =
       config.frontClearanceM + (projection.depthPx - minDepthPx) * mpp * zScale;
     const rowIndex = rowIndexById.get(seat.rowId) ?? 0;

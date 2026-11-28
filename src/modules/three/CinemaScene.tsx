@@ -36,7 +36,7 @@ interface SceneContentProps {
   lookRequest: LookRequest;
   interactive: boolean;
   lightsOn: boolean;
-  onSelectSeat?: (seatId: string) => void;
+  onSelectSeat?: (seatId: string, additive?: boolean) => void;
   onDoubleClickSeat?: (seatId: string) => void;
 }
 
@@ -62,8 +62,8 @@ function SceneContent({
 
   return (
     <>
-      <color attach="background" args={[mode === 'overview' ? '#14110e' : '#070604']} />
-      {mode === 'seat' && <fog attach="fog" args={['#070604', fogNear, fogFar]} />}
+      <color attach="background" args={[lightsOn ? '#4b4a46' : mode === 'overview' ? '#14110e' : '#070604']} />
+      {mode === 'seat' && <fog attach="fog" args={[lightsOn ? '#4b4a46' : '#070604', fogNear, fogFar]} />}
 
       <Lighting geometry={geometry} config={config} lightsOn={lightsOn} />
       <Auditorium
