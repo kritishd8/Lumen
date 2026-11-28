@@ -1,12 +1,31 @@
 import { useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent } from 'react';
-import { ArrowUpRight, ChevronRight, Eye, Layers3, Lightbulb, Maximize2, Minus, Plus, Upload, X } from 'lucide-react';
+import { ArrowUpRight, ChevronRight, Download, Eye, Layers3, Lightbulb, Maximize2, Minus, Plus, Upload, X } from 'lucide-react';
 import { useAppStore } from '@/app/store/useAppStore';
 import { buildSpatialGeometry, viewMetricsForSeat } from '@/modules/reconstruction/geometry';
 import { CinemaScene, supportsWebGL } from '@/modules/three/CinemaScene';
 import { FLOOR_PRESETS, SCREEN_PRESETS } from '@/utils/defaults';
-import type { ConfigFieldKey } from '@/types';
+import type { ConfigFieldKey, ProjectRecord } from '@/types';
 
 const SAMPLE_PATH = '/test-seating-plan.png';
+
+function downloadAuditoriumManifest(project: ProjectRecord) {
+  const manifest = {
+    format: 'lumen-auditorium',
+    version: 1,
+    auditorium: {
+      id: project.id,
+      name: project.name,
+      layout: project.layout,
+      config: project.config,
+    },
+  };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(manifest, null, 2)], { type: 'application/json' }));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `${project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'auditorium'}-lumen.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+}
 
 function Brand() { return <button className="lf-brand" onClick={() => useAppStore.getState().goHome()}><i /><span>Lumen</span></button>; }
 
@@ -120,6 +139,7 @@ function Studio() {
           <section className="lf-panel-group"><h2>Room dimensions</h2><div className="lf-fields"><NumberInput label="Room width" field="widthM" value={project.config.widthM} min={4} max={60}/><NumberInput label="Room depth" field="lengthM" value={project.config.lengthM} min={5} max={100}/><NumberInput label="Row spacing" field="rowSpacingM" value={project.config.rowSpacingM} min={.5} max={3}/><NumberInput label="Column spacing" field="seating.seatGapM" value={project.config.seating.seatGapM} min={.02} max={1}/></div></section>
           <section className="lf-panel-group"><h2>Room model</h2><div className="lf-fields"><NumberInput label="Ceiling" field="ceilingHeightM" value={project.config.ceilingHeightM} min={2} max={30}/><NumberInput label="Screen elevation" field="screen.elevationM" value={project.config.screen.elevationM} min={0} max={5}/><NumberInput label="Seat width" field="seating.seatWidthM" value={project.config.seating.seatWidthM} min={.3} max={2}/></div><label className="lf-switch"><span><b>Curved screen</b></span><input type="checkbox" checked={project.config.screen.curved} onChange={(event) => setConfigFlag('screen.curved', event.target.checked)}/><i/></label></section>
           <section className="lf-panel-group"><h2>Walkways</h2><div className="lf-walkway-actions">{walkwaySlots.map((slot) => { const aisle = manualDividers.find((item) => Math.abs(item.x - slot.x) < .18); return <button key={slot.label} className={aisle ? 'is-active' : ''} onClick={() => aisle ? deleteAisle(aisle.id) : addAisle(slot.x, .5, 'vertical')}>{aisle ? `Remove ${slot.label}` : `Add ${slot.label}`}</button>; })}</div>{manualDividers.map((aisle) => <div className="lf-walkway-tuning" key={aisle.id}><div><b>{dividerName(aisle.x)}</b><span>Moves seats aside in 3D.</span></div><label><span>Position</span><input type="range" min="8" max="92" value={Math.round(aisle.x * 100)} onChange={(event) => updateAisle(aisle.id, { x: Number(event.target.value) / 100 })}/></label><label><span>Width</span><input type="range" min="2" max="14" value={Math.round(aisle.width * 100)} onChange={(event) => updateAisle(aisle.id, { width: Number(event.target.value) / 100 })}/></label></div>)}</section>
+          <section className="lf-panel-group lf-integration"><h2>API integration</h2><p>Download the theatre manifest for your server to send to Lumen’s API. It contains no API key or image.</p><button className="lf-button lf-button--quiet" onClick={() => downloadAuditoriumManifest(project)}><Download size={14}/>Download API JSON</button></section>
         </>}
       </div></aside>
     </div>

@@ -29,6 +29,8 @@ integrations that need server-side image analysis or geometry calculations.
   JSON files.
 - Use the optional authenticated REST API for image analysis and geometry/view-metric
   calculations.
+- Download a theatre-specific API manifest after configuring a room, then use it from
+  a booking system's server to request a 3D-ready auditorium payload.
 
 ## Getting started
 
@@ -61,14 +63,6 @@ npm run build
 npm run preview
 ```
 
-### Deploy to GitHub Pages
-
-The repository includes a GitHub Actions workflow for publishing the browser app to
-`https://kritishd8.github.io/Lumen/` whenever `main` is updated. In the repository's
-**Settings → Pages**, select **GitHub Actions** as the build and deployment source.
-The workflow builds the app and deploys the `dist` directory. The optional Node API
-is not deployed to GitHub Pages.
-
 ## Optional REST API
 
 The API is a separate Node.js service. Running the browser app does not require the
@@ -78,6 +72,8 @@ API. It provides:
 - `POST /v1/reconstructions/analyze` — analyze a seating-plan image.
 - `POST /v1/reconstructions/geometry` — calculate auditorium geometry and optional
   view metrics for selected seats.
+- `POST /v1/auditoriums/render` — validate a saved theatre manifest and return its
+  layout, configuration, 3D geometry, and optional seat-view metrics.
 
 Build and run the service with a private API key:
 

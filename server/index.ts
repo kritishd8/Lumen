@@ -12,6 +12,7 @@ import { detectionResultToLayout } from '@/modules/image-processing/detection';
 import { createDefaultConfig } from '@/utils/defaults';
 import {
   auditoriumConfigSchema,
+  auditoriumRenderRequestSchema,
   geometryRequestSchema,
 } from './schema';
 
@@ -243,6 +244,47 @@ export function createApiServer(options: ApiServerOptions): FastifyInstance {
         return viewMetricsForSeat(seat, geometry, config);
       });
       return { geometry, metrics };
+    },
+  );
+
+  server.post(
+    '/v1/auditoriums/render',
+    {
+      config: { rateLimit: { max: 30, timeWindow: '1 minute' } },
+    },
+    async (request, reply) => {
+      const parsed = auditoriumRenderRequestSchema.safeParse(request.body);
+      if (!parsed.success) {
+        return reply.code(400).send({
+          error: {
+            code: 'invalid_manifest',
+            message: 'The auditorium manifest is invalid.',
+            details: parseZodError(parsed.error.issues),
+            requestId: request.id,
+          },
+        });
+      }
+      const { manifest, seatIds = [] } = parsed.data;
+      const { layout, config } = manifest.auditorium;
+      const geometry = buildSpatialGeometry(layout, config);
+      const metrics = seatIds.map((seatId) => {
+        const seat = geometry.seats.find((item) => item.seat.id === seatId);
+        if (!seat) {
+          throw apiError(400, 'unknown_seat', `Seat "${seatId}" is not present in the layout.`);
+        }
+        return viewMetricsForSeat(seat, geometry, config);
+      });
+      return {
+        apiVersion: 'v1',
+        auditorium: {
+          id: manifest.auditorium.id ?? null,
+          name: manifest.auditorium.name ?? null,
+          layout,
+          config,
+          geometry,
+        },
+        metrics,
+      };
     },
   );
 

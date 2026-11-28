@@ -221,6 +221,28 @@ export const geometryRequestSchema = z
   })
   .strict();
 
+export const auditoriumManifestSchema = z
+  .object({
+    format: z.literal('lumen-auditorium'),
+    version: z.literal(1),
+    auditorium: z
+      .object({
+        id: id.optional(),
+        name: z.string().min(1).max(160).optional(),
+        layout: layoutSchema,
+        config: auditoriumConfigSchema,
+      })
+      .strict(),
+  })
+  .strict();
+
+export const auditoriumRenderRequestSchema = z
+  .object({
+    manifest: auditoriumManifestSchema,
+    seatIds: z.array(id).max(20).optional(),
+  })
+  .strict();
+
 export const cropSchema = z
   .object({
     x: normalized,

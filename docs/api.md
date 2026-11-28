@@ -37,6 +37,22 @@ Requests are rate-limited to 60 per minute per client IP; image analysis is limi
 
 Image analysis runs in a bounded worker thread. Only PNG, JPEG, and WebP files are accepted. API keys are held in memory as hashes and are compared in constant time. The service does not persist the request image or returned layout.
 
+## Theatre integrations
+
+After a theatre has refined a room in Lumen, use **Download API JSON** in the
+auditorium's Advanced settings. The resulting `lumen-auditorium` manifest contains
+only its editable layout and room configuration. It does not contain the source
+image, an API key, a user token, or any booking data.
+
+Store that JSON in the theatre's own server-side application. Their booking app
+should call its own backend, and that backend should call Lumen with the private API
+key. Do not call Lumen directly from a public browser app.
+
+The API returns a 3D-ready data contract (layout, configuration, spatial geometry,
+and optional view metrics). A client still needs a renderer—such as a Lumen viewer
+integration or its own Three.js renderer—to draw the interactive auditorium. APIs
+return data, not a remotely executable 3D canvas.
+
 ## Routes
 
 ### `GET /v1/health`
@@ -75,6 +91,31 @@ Send a JSON body containing an existing `layout`, a full `config`, and optional 
 ```
 
 Returns `{ "geometry": SpatialGeometry, "metrics": ViewMetrics[] }`. Omit `seatIds` to skip view-metric calculations. Layout and configuration fields are validated, bounded, and unknown fields are rejected.
+
+### `POST /v1/auditoriums/render`
+
+Use this endpoint from a theatre's server after it has saved the manifest downloaded
+from Lumen. It validates the manifest before calculating a complete spatial model.
+
+```json
+{
+  "manifest": {
+    "format": "lumen-auditorium",
+    "version": 1,
+    "auditorium": {
+      "id": "theatre-screen-4",
+      "name": "Screen 4",
+      "layout": { "...": "SeatingLayout" },
+      "config": { "...": "AuditoriumConfig" }
+    }
+  },
+  "seatIds": ["seat-a1"]
+}
+```
+
+Returns the validated `layout`, `config`, and `geometry` under `auditorium`, plus
+the requested seat `metrics`. The manifest is supplied per request and is never
+persisted by this stateless API.
 
 ## Errors
 
